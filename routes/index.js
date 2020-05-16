@@ -1,20 +1,15 @@
 'use strict'
 
 const express = require('express');
-const productCtrl = require('../controllers/product');
-const userCtrl = require('../controllers/user');
-const auth = require('../middlewares/auth');
+const projectCtrl = require('../controllers/project');
 const api = express.Router();
 
-api.get('/product', productCtrl.getProducts);
-api.get('/product/:productId', productCtrl.getProduct);
-api.post('/product', productCtrl.saveProduct);
-api.post('/signup', userCtrl.signUp);
-api.post('/signin', userCtrl.signIn);
-api.put('/product/:productId', productCtrl.updateProduct);
-api.delete('/product/:productId', productCtrl.deleteProduct);
-api.get('/private', auth, (req,res) => {
-    res.status(200).send({message: 'succesfully access with token'})
-});
+// Project Data Managment
+api.get('/project', projectCtrl.getProjects);
+api.get('/project/:projectId', projectCtrl.getProject);
+api.post('/project', projectCtrl.saveProject);
+api.put('/project/:projectId', projectCtrl.updateProject);
+api.delete('/project/:projectId', projectCtrl.deleteProject);
+
 
 module.exports = api;
